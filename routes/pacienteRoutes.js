@@ -1,16 +1,25 @@
 import express from 'express'
+const router = express.Router()
 import {
     agregarPaciente,
-    obtenerPacientes
+    obtenerPacientes,
+    obtenerPaciente,
+    actualizarPaciente,
+    eliminarPaciente
 } from '../controllers/pacienteController.js'
 import checkAuth from '../middleware/authMiddleware.js'
 
-const router = express.Router()
 
 /* EndPoints */
-router.route('/')
+router
+    .route('/')
     .post(checkAuth, agregarPaciente)
-    .get(obtenerPacientes)
+    .get(checkAuth, obtenerPacientes);
 
+router
+    .route('/:id')
+    .get(checkAuth, obtenerPaciente)
+    .put(checkAuth, actualizarPaciente)
+    .delete(checkAuth, eliminarPaciente)
 
 export default router

@@ -120,6 +120,11 @@ const nuevoPassword = async (req,res) =>{
         console.log(error);
     }
 }
+
+const prueba = (req,res) => {
+    console.log(req.params);
+    console.log('xd');
+}
 export {
     registrar,
     perfil,
@@ -127,5 +132,6 @@ export {
     autentificar,
     olvidePassword,
     comprobarToken,
-    nuevoPassword
+    nuevoPassword,
+    prueba
 }
